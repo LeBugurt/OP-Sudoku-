@@ -1,4 +1,5 @@
 import {GRID_SIZE} from "./utilities.js"
+import {arrayTemplates} from "./tamplates.js";
 
 export function generateSudoku() {
     const sudoku = createEmptyGrid();
@@ -6,112 +7,20 @@ export function generateSudoku() {
     return removeCells(sudoku);
 }
 
-// function createEmptyGrid() {
-//     return new Array(GRID_SIZE).fill(null).map(() => {
-//         return new Array(GRID_SIZE).fill(null).map(() => {
-//             return {
-//                 value: null,
-//                 figure: null,
-//             }
-//         })
-//     })
-// }
+export function createEmptyGrid_() {
+    return new Array(GRID_SIZE).fill(null).map(() => {
+        return new Array(GRID_SIZE).fill(null).map(() => {
+            return {
+                value: null,
+                figure: null,
+            }
+        })
+    })
+}
 
 function createEmptyGrid() {
-    return [
-        [
-            {value: null, figure: 1,},
-            {value: null, figure: 1,},
-            {value: null, figure: 1,},
-            {value: null, figure: 1,},
-            {value: null, figure: 2,},
-            {value: null, figure: 2,},
-            {value: null, figure: 2,},
-            {value: null, figure: 2,},
-            {value: null, figure: 3,}
-        ],
-        [
-            {value: null, figure: 1,},
-            {value: null, figure: 4,},
-            {value: null, figure: 1,},
-            {value: null, figure: 2,},
-            {value: null, figure: 2,},
-            {value: null, figure: 3,},
-            {value: null, figure: 3,},
-            {value: null, figure: 3,},
-            {value: null, figure: 3,}
-        ],
-        [
-            {value: null, figure: 1,},
-            {value: null, figure: 4,},
-            {value: null, figure: 1,},
-            {value: null, figure: 2,},
-            {value: null, figure: 2,},
-            {value: null, figure: 3,},
-            {value: null, figure: 3,},
-            {value: null, figure: 5,},
-            {value: null, figure: 3,}],
-        [
-            {value: null, figure: 4,},
-            {value: null, figure: 4,},
-            {value: null, figure: 1,},
-            {value: null, figure: 2,},
-            {value: null, figure: 6,},
-            {value: null, figure: 3,},
-            {value: null, figure: 5,},
-            {value: null, figure: 5,},
-            {value: null, figure: 5,}],
-        [
-            {value: null, figure: 4,},
-            {value: null, figure: 6,},
-            {value: null, figure: 6,},
-            {value: null, figure: 6,},
-            {value: null, figure: 6,},
-            {value: null, figure: 6,},
-            {value: null, figure: 6,},
-            {value: null, figure: 6,},
-            {value: null, figure: 5,}],
-        [
-            {value: null, figure: 4,},
-            {value: null, figure: 4,},
-            {value: null, figure: 4,},
-            {value: null, figure: 7,},
-            {value: null, figure: 6,},
-            {value: null, figure: 8,},
-            {value: null, figure: 9,},
-            {value: null, figure: 5,},
-            {value: null, figure: 5,}],
-        [
-            {value: null, figure: 7,},
-            {value: null, figure: 4,},
-            {value: null, figure: 7,},
-            {value: null, figure: 7,},
-            {value: null, figure: 8,},
-            {value: null, figure: 8,},
-            {value: null, figure: 9,},
-            {value: null, figure: 5,},
-            {value: null, figure: 9,}],
-        [
-            {value: null, figure: 7,},
-            {value: null, figure: 7,},
-            {value: null, figure: 7,},
-            {value: null, figure: 7,},
-            {value: null, figure: 8,},
-            {value: null, figure: 8,},
-            {value: null, figure: 9,},
-            {value: null, figure: 5,},
-            {value: null, figure: 9,}],
-        [
-            {value: null, figure: 7,},
-            {value: null, figure: 8,},
-            {value: null, figure: 8,},
-            {value: null, figure: 8,},
-            {value: null, figure: 8,},
-            {value: null, figure: 9,},
-            {value: null, figure: 9,},
-            {value: null, figure: 9,},
-            {value: null, figure: 9,}],
-    ]
+    const numbers = getRandomNumbers();
+    return arrayTemplates[numbers[0] % 7];
 }
 
 export function findEmptyCell(grid) {

@@ -3,6 +3,16 @@
     --bg-cell: #f2f2f2;
     --filled-bg: #d9d9d9;
     --text-color: #222222;
+    --selected: #f2f2f2;
+    --figure1Color: #66ff66;
+    --figure2Color: #817ffb;
+    --figure3Color: #e4312b;
+    --figure4Color: #b06ac0;
+    --figure5Color: #e9d61c;
+    --figure6Color: #ff8000;
+    --figure7Color: #4da67c;
+    --figure8Color: #10e1d0;
+    --figure9Color: #a7ef46;
 
     --cell-size: 8vmin;
     --border-radius: 0.5vmin;
@@ -71,4 +81,72 @@ body {
     font-size: var(--font-size);
     color: var(--text-color);
     cursor: pointer;
+}
+
+.cell.figureNum1 {
+    background-color: var(--figure1Color);
+}
+
+.cell.figureNum2 {
+    background-color: var(--figure2Color);
+}
+
+.cell.figureNum3 {
+    background-color: var(--figure3Color);
+}
+
+.cell.figureNum4 {
+    background-color: var(--figure4Color);
+}
+
+.cell.figureNum5 {
+    background-color: var(--figure5Color);
+}
+
+.cell.figureNum6 {
+    background-color: var(--figure6Color);
+}
+
+.cell.figureNum7 {
+    background-color: var(--figure7Color);
+}
+
+.cell.figureNum8 {
+    background-color: var(--figure8Color);
+}
+
+.cell.figureNum9 {
+    background-color: var(--figure9Color);
+}
+
+.cell.selected {
+    background-color: var(--selected);
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0% {
+        transform: scale(1.2);
+    }
+
+    25% {
+        transform: scale(1.2) rotate(30deg);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(-30deg);
+    }
+}
+
+.zoom {
+    animation: zoom 0.5s ease-in-out;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1.2);
+    }
 }

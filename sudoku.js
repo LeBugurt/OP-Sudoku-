@@ -9,11 +9,11 @@ export class Sudoku {
     getDuplicatePositions(row, column, value) {
         const duplicatesInColumn = this.getDuplicatePositionsInColumn(row, column, value)
         const duplicatesInRow = this.getDuplicatePositionsInRow(row, column, value);
-        const duplicatesInBox = this.getDuplicatePositionsInBox(row, column, value);
+        const duplicatesInFigure = this.getDuplicatePositionsInFigure(row, column, value);
 
         const duplicates = [...duplicatesInColumn, ...duplicatesInRow];
-        duplicatesInBox.forEach(duplicateInBox => {
-            if (duplicateInBox.row !== row && duplicateInBox.column !== column) duplicates.push(duplicateInBox);
+        duplicatesInFigure.forEach(duplicateInFigure => {
+            if (duplicateInFigure.row !== row && duplicateInFigure.column !== column) duplicates.push(duplicateInFigure);
         });
 
         return duplicates;
@@ -22,7 +22,7 @@ export class Sudoku {
     getDuplicatePositionsInColumn(row, column, value) {
         const duplicates = [];
         for (let iRow = 0; iRow < GRID_SIZE; iRow++) {
-            if (this.grid[iRow][column] === value && iRow !== row) {
+            if (this.grid[iRow][column].value === value && iRow !== row) {
                 duplicates.push({ row: iRow, column });
             }
         }
@@ -32,14 +32,14 @@ export class Sudoku {
     getDuplicatePositionsInRow(row, column, value) {
         const duplicates = [];
         for (let iColumn = 0; iColumn < GRID_SIZE; iColumn++) {
-            if (this.grid[row][iColumn] === value && iColumn !== column) {
+            if (this.grid[row][iColumn].value === value && iColumn !== column) {
                 duplicates.push({ row, column: iColumn });
             }
         }
         return duplicates;
     }
 
-    getDuplicatePositionsInBox(row, column, value) {
+    getDuplicatePositionsInFigure(row, column, value) {
         const duplicates = [];
         for (let iRow = 0; iRow < GRID_SIZE; iRow++) {
             for (let iColum = 0; iColum < GRID_SIZE; iColum++) {
